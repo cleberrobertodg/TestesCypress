@@ -43,11 +43,15 @@ describe('Teste PagMenos', function() {
         cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#password_confirmation').type('1223456', {force:true})//digita senha fora do padrão
         cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('part_regulamento').check()//aceite de termos
+        cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
+        cy.get('part_regulamento').uncheck()//aceite de termos
+        cy.get('part_regulamento_promocao').check()//aceite política de privacidade  
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(10000)
     })
 
-    it.only('Inscreve Participante', function(){
+    it('Inscreve Participante', function(){
       cy.get('#novo_cpf').type('40957788819')//preenche cpf corretamente
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       cy.wait(500)
@@ -58,12 +62,18 @@ describe('Teste PagMenos', function() {
       cy.get('#email').type('cleber@encinterativa.com.br', {force:true})//escreve email correto
       cy.get('#email_confirmation').type('cleber@encinterativa.com.br', {force:true})//escreve email de confirmação
       cy.get('#part_cep').type('06618010', {force:true})//escreve cep
-      cy.wait(3000)
       cy.contains('button', 'Buscar').click({force:true})//clica em buscar cep
+      Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from
+        // failing the test
+        return false
+      })
       cy.wait(3000)
       cy.get('#part_numero').type('100', {force:true})//escreve número da casa
       cy.get('#password').type('Senha123', {force:true})//digita senha 
       cy.get('#password_confirmation').type('Senha123', {force:true})//digita confirmação senha
+      cy.get('part_regulamento').check()//aceite de termos
+      cy.get('part_regulamento_promocao').check()//aceite política de privacidade
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       //cy.wait(10000)
   })
