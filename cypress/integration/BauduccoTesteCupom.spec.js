@@ -12,7 +12,7 @@ describe('Teste PagMenos', function() {
        //Testa login com dados errados, testa suas mensagens de erro de preenchimento  e depois testa com os dados corretos
 
         cy.get('#adopt-accept-all-button').click()
-        cy.get('#novo_cpf').type('11182624332')//insere cpf válido
+        cy.get('#novo_cpf').type('16326175364')//insere cpf válido
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(1000)
         cy.get('#text-password').type('Senha', {force:true})//digita senha errada
@@ -53,19 +53,19 @@ describe('Teste PagMenos', function() {
         cy.get('#modal-primary___BV_modal_body_ > div > div:nth-child(2) > div > div').should('be.visible').contains('Imagem do cupom obrigatória.')//valida mensagem de erro da imagem do cupom faltante
         cy.wait(3000)
         cy.get('.bi-x').click({force:true})//clica no "x" e fecha mensagem de erro
-        cy.wait(3000)
+        cy.wait(1000)
         
 
     })
 
     it('Inscreve Cupom corretamente', function(){
-        cy.get('#novo_cpf').type('11182624332')//insere cpf válido
+        cy.get('#novo_cpf').type('16326175364')//insere cpf válido
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(1000)
         cy.get('#text-password').clear().type('Senha123', {force:true})//digita senha correta
         cy.get('#page--login > div > div > div > div > div > form > div.login-footer.d-flex.align-items-center.justify-content-center.flex-column > button').click({force:true})//clica em enviar
         cy.get('#cupo_cnpj').clear().type('55.373.525/0001-64', {force:true})//escreve cnpj válido
-        cy.get('#cupo_codigo').clear().type('1', {force:true})//escreve valor válido no cupom
+        cy.get('#cupo_codigo').clear().type('2', {force:true})//escreve valor válido no cupom
         cy.get('#page--cadastro-cupom > section > form > div > div.row.d-flex.align-items-start.justify-content-center > div:nth-child(3) > div > div > div.vdp-datepicker > div:nth-child(1) > input').click({force:true})
         cy.get('.cell.day.today').click({force:true})//escolhe data do dia atual no calendario
         cy.get('.vs__search').click({force:true})//habilita seleção de produto

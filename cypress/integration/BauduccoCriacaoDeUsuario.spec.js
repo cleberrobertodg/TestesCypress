@@ -11,7 +11,7 @@ describe('Teste PagMenos', function() {
         cy.get('#adopt-accept-all-button').click()
         cy.get('#novo_cpf').type('srgtewrgt')//preenche cpf errado
         cy.get('#input-cpf-live-feedback > span').should('be.visible').contains('O campo CPF é obrigatório')//verifica msg de erro
-        cy.get('#novo_cpf').type('40957788819')//insere cpf válido
+        cy.get('#novo_cpf').type('16326175364')//insere cpf válido
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(500)
         cy.get('#part_cpf').clear()//apaga campo de cpf
@@ -43,24 +43,22 @@ describe('Teste PagMenos', function() {
         cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#password_confirmation').type('1223456', {force:true})//digita senha fora do padrão
         cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
-        cy.get('part_regulamento').check()//aceite de termos
-        cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
-        cy.get('part_regulamento').uncheck()//aceite de termos
-        cy.get('part_regulamento_promocao').check()//aceite política de privacidade  
+        cy.wait(500)
+        cy.get('#part_regulamento').check({force:true})//aceite de termos
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(10000)
     })
 
     it('Inscreve Participante', function(){
-      cy.get('#novo_cpf').type('40729333841')//preenche cpf corretamente
+      cy.get('#novo_cpf').type('16326175364')//preenche cpf corretamente
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       cy.wait(500)
       cy.get('#part_nome').type('Cleber Cypress', {force:true})//escreve nome
       cy.get('#part_sobrenome').type('Test', {force:true})//escreve sobrenome
       cy.get('#part_data_nascimento').type('12041992', {force:true})
-      cy.get('#part_telefone1').type('11946492873', {force:true})
-      cy.get('#email').type('cleber@encinterativa.com.br', {force:true})//escreve email correto
-      cy.get('#email_confirmation').type('cleber@encinterativa.com.br', {force:true})//escreve email de confirmação
+      cy.get('#part_telefone1').type('11946492871', {force:true})
+      cy.get('#email').type('cleber+2000@encinterativa.com.br', {force:true})//escreve email correto
+      cy.get('#email_confirmation').type('cleber+2000@encinterativa.com.br', {force:true})//escreve email de confirmação
       cy.get('#part_cep').type('06618010', {force:true})//escreve cep
       cy.contains('button', 'Buscar').click({force:true})//clica em buscar cep
       Cypress.on('uncaught:exception', (err, runnable) => {
@@ -72,10 +70,12 @@ describe('Teste PagMenos', function() {
       cy.get('#part_numero').type('100', {force:true})//escreve número da casa
       cy.get('#password').type('Senha123', {force:true})//digita senha 
       cy.get('#password_confirmation').type('Senha123', {force:true})//digita confirmação senha
-      cy.get('part_regulamento').check()//aceite de termos
-      cy.get('part_regulamento_promocao').check()//aceite política de privacidade
+      cy.wait(500)
+      cy.get('#part_regulamento').check({force:true})//aceite de termos
+      cy.get('#part_regulamento_promocao').check({force:true})//aceite política de privacidade
+      cy.get('#part_como_ficou_sabendo > div:nth-child(5) > label').click({force:true})//clica no ícone de como ficou sabendo, opção Google
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
-      //cy.wait(10000)
+      cy.wait(10000)
   })
 
   })
