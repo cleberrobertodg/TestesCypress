@@ -52,7 +52,7 @@ describe('Teste PagMenos', function() {
     })
 
     it('Inscreve Participante', function(){
-      cy.get('#novo_cpf').type('40957788819')//preenche cpf corretamente
+      cy.get('#novo_cpf').type('40729333841')//preenche cpf corretamente
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       cy.wait(500)
       cy.get('#part_nome').type('Cleber Cypress', {force:true})//escreve nome
