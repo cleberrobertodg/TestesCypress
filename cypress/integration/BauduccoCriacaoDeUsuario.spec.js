@@ -1,12 +1,9 @@
-import { cpf, cnpj } from 'cpf-cnpj-validator';
+
+import { randomCPF, email, randomPhone } from '../support/variables';
 
 describe('Bauducco', function() {
 
-  const randomCPF = cpf.generate(); // Gera CPF válido randômico
-  const randomCNPJ = cnpj.generate(); // Gera CNPJ válido randômico
-  const randomEmail = Math.floor(Math.random() * 1000); // Número entre 0 e 99999
-  const email = `cleber+${randomEmail}@encinterativa.com.br`;
-  const randomPhone = `9${Math.floor(10000000000 + Math.random() * 90000000000)}`; // Exemplo: 91234567890
+ 
 
     beforeEach(() => {
         cy.visit('https://homologd.encinterativa.com.br/bauduccoLeve2025/home/')
@@ -60,10 +57,9 @@ describe('Bauducco', function() {
         cy.wait(10000)
     })
 
-    it.only('Inscreve Participante', function(){
+    it('Inscreve Participante', function(){
 
-      const randomCPF = cpf.generate(); // Gera CPF válido randômico
-      const randomCNPJ = cnpj.generate(); // Gera CNPJ válido randômico
+      
 
       cy.get('#novo_cpf').type(randomCPF)//preenche cpf corretamente
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar

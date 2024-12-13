@@ -1,4 +1,4 @@
-import { cpf, cnpj } from 'cpf-cnpj-validator';
+
 
 describe('Teste PagMenos', function() {
 
@@ -11,8 +11,7 @@ describe('Teste PagMenos', function() {
 
     it('Inscreve cupom com dados errados e valida msg de erro', function(){
 
-        const randomCPF = cpf.generate(); // Gera CPF válido randômico
-        const randomCNPJ = cnpj.generate(); // Gera CNPJ válido randômico
+       
        
        //Testa login com dados errados, testa suas mensagens de erro de preenchimento  e depois testa com os dados corretos
 
@@ -108,10 +107,9 @@ describe('Teste PagMenos', function() {
 
     it('Inscreve Cupom corretamente', function(){
 
-        const randomCPF = cpf.generate(); // Gera CPF válido randômico
-        const randomCNPJ = cnpj.generate(); // Gera CNPJ válido randômico
-
         
+
+
         cy.get('#novo_cpf').type('74966237688')//insere cpf válido
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(1000)
