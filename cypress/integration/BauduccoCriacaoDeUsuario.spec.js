@@ -50,15 +50,15 @@ describe('Teste PagMenos', function() {
     })
 
     it('Inscreve Participante', function(){
-      cy.get('#novo_cpf').type('16326175364')//preenche cpf corretamente
+      cy.get('#novo_cpf').type('94817838710')//preenche cpf corretamente
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       cy.wait(500)
       cy.get('#part_nome').type('Cleber Cypress', {force:true})//escreve nome
       cy.get('#part_sobrenome').type('Test', {force:true})//escreve sobrenome
       cy.get('#part_data_nascimento').type('12041992', {force:true})
-      cy.get('#part_telefone1').type('11946492871', {force:true})
-      cy.get('#email').type('cleber+2000@encinterativa.com.br', {force:true})//escreve email correto
-      cy.get('#email_confirmation').type('cleber+2000@encinterativa.com.br', {force:true})//escreve email de confirmação
+      cy.get('#part_telefone1').type('11946492890', {force:true})
+      cy.get('#email').type('cleber+2012@encinterativa.com.br', {force:true})//escreve email correto
+      cy.get('#email_confirmation').type('cleber+2012@encinterativa.com.br', {force:true})//escreve email de confirmação
       cy.get('#part_cep').type('06618010', {force:true})//escreve cep
       cy.contains('button', 'Buscar').click({force:true})//clica em buscar cep
       Cypress.on('uncaught:exception', (err, runnable) => {
