@@ -1,4 +1,4 @@
-describe('Teste PagMenos', function() {
+describe('Bauducco', function() {
 
     beforeEach(() => {
         cy.visit('https://homologd.encinterativa.com.br/bauduccoLeve2025/home/')
@@ -11,7 +11,7 @@ describe('Teste PagMenos', function() {
         cy.get('#adopt-accept-all-button').click()
         cy.get('#novo_cpf').type('srgtewrgt')//preenche cpf errado
         cy.get('#input-cpf-live-feedback > span').should('be.visible').contains('O campo CPF é obrigatório')//verifica msg de erro
-        cy.get('#novo_cpf').type('16326175364')//insere cpf válido
+        cy.get('#novo_cpf').type('74966237688')//insere cpf válido
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(500)
         cy.get('#part_cpf').clear()//apaga campo de cpf
@@ -50,15 +50,15 @@ describe('Teste PagMenos', function() {
     })
 
     it('Inscreve Participante', function(){
-      cy.get('#novo_cpf').type('94817838710')//preenche cpf corretamente
+      cy.get('#novo_cpf').type('74966237688')//preenche cpf corretamente
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       cy.wait(500)
       cy.get('#part_nome').type('Cleber Cypress', {force:true})//escreve nome
       cy.get('#part_sobrenome').type('Test', {force:true})//escreve sobrenome
       cy.get('#part_data_nascimento').type('12041992', {force:true})
-      cy.get('#part_telefone1').type('11946492890', {force:true})
-      cy.get('#email').type('cleber+2012@encinterativa.com.br', {force:true})//escreve email correto
-      cy.get('#email_confirmation').type('cleber+2012@encinterativa.com.br', {force:true})//escreve email de confirmação
+      cy.get('#part_telefone1').type('11946492870', {force:true})
+      cy.get('#email').type('cleber+2010@encinterativa.com.br', {force:true})//escreve email correto
+      cy.get('#email_confirmation').type('cleber+2010@encinterativa.com.br', {force:true})//escreve email de confirmação
       cy.get('#part_cep').type('06618010', {force:true})//escreve cep
       cy.contains('button', 'Buscar').click({force:true})//clica em buscar cep
       Cypress.on('uncaught:exception', (err, runnable) => {
