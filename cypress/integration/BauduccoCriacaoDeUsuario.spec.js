@@ -1,4 +1,12 @@
+import { cpf, cnpj } from 'cpf-cnpj-validator';
+
 describe('Bauducco', function() {
+
+  const randomCPF = cpf.generate(); // Gera CPF válido randômico
+  const randomCNPJ = cnpj.generate(); // Gera CNPJ válido randômico
+  const randomEmail = Math.floor(Math.random() * 1000); // Número entre 0 e 99999
+  const email = `cleber+${randomEmail}@encinterativa.com.br`;
+  const randomPhone = `9${Math.floor(10000000000 + Math.random() * 90000000000)}`; // Exemplo: 91234567890
 
     beforeEach(() => {
         cy.visit('https://homologd.encinterativa.com.br/bauduccoLeve2025/home/')
@@ -8,10 +16,13 @@ describe('Bauducco', function() {
     
 
     it('Valida se o form aceita campos preenchidos em formato inválido, e se retorna mensagens de erro', function(){
+
+     
+
         cy.get('#adopt-accept-all-button').click()
         cy.get('#novo_cpf').type('srgtewrgt')//preenche cpf errado
         cy.get('#input-cpf-live-feedback > span').should('be.visible').contains('O campo CPF é obrigatório')//verifica msg de erro
-        cy.get('#novo_cpf').type('74966237688')//insere cpf válido
+        cy.get('#novo_cpf').type(randomCPF)//insere cpf válido
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(500)
         cy.get('#part_cpf').clear()//apaga campo de cpf
@@ -49,16 +60,20 @@ describe('Bauducco', function() {
         cy.wait(10000)
     })
 
-    it('Inscreve Participante', function(){
-      cy.get('#novo_cpf').type('74966237688')//preenche cpf corretamente
+    it.only('Inscreve Participante', function(){
+
+      const randomCPF = cpf.generate(); // Gera CPF válido randômico
+      const randomCNPJ = cnpj.generate(); // Gera CNPJ válido randômico
+
+      cy.get('#novo_cpf').type(randomCPF)//preenche cpf corretamente
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       cy.wait(500)
       cy.get('#part_nome').type('Cleber Cypress', {force:true})//escreve nome
       cy.get('#part_sobrenome').type('Test', {force:true})//escreve sobrenome
       cy.get('#part_data_nascimento').type('12041992', {force:true})
-      cy.get('#part_telefone1').type('11946492870', {force:true})
-      cy.get('#email').type('cleber+2010@encinterativa.com.br', {force:true})//escreve email correto
-      cy.get('#email_confirmation').type('cleber+2010@encinterativa.com.br', {force:true})//escreve email de confirmação
+      cy.get('#part_telefone1').type(randomPhone, {force:true})
+      cy.get('#email').type(email, {force:true})//escreve email correto
+      cy.get('#email_confirmation').type(email, {force:true})//escreve email de confirmação
       cy.get('#part_cep').type('06618010', {force:true})//escreve cep
       cy.contains('button', 'Buscar').click({force:true})//clica em buscar cep
       Cypress.on('uncaught:exception', (err, runnable) => {
