@@ -1,5 +1,7 @@
 
 
+import { randomCPF, email, randomPhone, randomCNPJ } from '../support/variables';
+
 describe('Teste PagMenos', function() {
 
     beforeEach(() => {

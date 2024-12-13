@@ -1,6 +1,9 @@
 
 import { randomCPF, email, randomPhone } from '../support/variables';
 
+
+
+
 describe('Bauducco', function() {
 
  
@@ -54,7 +57,7 @@ describe('Bauducco', function() {
         cy.wait(500)
         cy.get('#part_regulamento').check({force:true})//aceite de termos
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
-        cy.wait(10000)
+       // cy.wait(10000)
     })
 
     it('Inscreve Participante', function(){
@@ -86,7 +89,10 @@ describe('Bauducco', function() {
       cy.get('#part_regulamento_promocao').check({force:true})//aceite política de privacidade
       cy.get('#part_como_ficou_sabendo > div:nth-child(5) > label').click({force:true})//clica no ícone de como ficou sabendo, opção Google
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
-      cy.wait(10000)
+      //cy.wait(10000)
   })
 
   })
+
+
+  
