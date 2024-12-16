@@ -3,13 +3,13 @@ import { randomCPF, email, randomPhone } from '../support/variables';
 
 
 
-describe('Bauducco', function() {
+describe('Criação de usuário PagMenos', function() {
 
  
 
     beforeEach(() => {
-        cy.visit('https://homologd.encinterativa.com.br/bauduccoLeve2025/home/')
-        cy.title().should('be.equal', 'Promoção Leve Bauducco Com Você')
+        cy.visit('https://homologd.encinterativa.com.br/pagueMenos2024/home/')
+        cy.title().should('be.equal', 'Promoção Saúde Premiada Pague Menos, Cimed e Extrafarma')
       })
     
     
@@ -18,7 +18,8 @@ describe('Bauducco', function() {
 
      
 
-        cy.get('#adopt-accept-all-button').click()
+        cy.get('body > div.enc--wrapper > div.info-cookies > div > div > div > div:nth-child(2) > div > button').click()
+        cy.get('#nav-collapse > ul > div > div > ul > li > a').click()
         cy.get('#novo_cpf').type('srgtewrgt')//preenche cpf errado
         cy.get('#input-cpf-live-feedback > span').should('be.visible').contains('O campo CPF é obrigatório')//verifica msg de erro
         cy.get('#novo_cpf').type(randomCPF)//insere cpf válido
@@ -62,17 +63,20 @@ describe('Bauducco', function() {
     it.only('Inscreve Participante', function(){
 
       
-
-      cy.get('#novo_cpf').type(randomCPF)//preenche cpf corretamente
+      cy.get('body > div.enc--wrapper > div.info-cookies > div > div > div > div:nth-child(2) > div > button').click()
+      cy.get('#nav-collapse > ul > div > div > ul > li > a').click()
+      cy.get('#novo_cpf').type(randomCPF, {force:true})//preenche cpf corretamente
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       cy.wait(500)
       cy.get('#part_nome').type('Cleber Cypress', {force:true})//escreve nome
-      cy.get('#part_sobrenome').type('Test', {force:true})//escreve sobrenome
+      //cy.get('#part_sobrenome').type('Test', {force:true})//escreve sobrenome
       cy.get('#part_data_nascimento').type('12041992', {force:true})
+      cy.get('#vs1__combobox > div.vs__selected-options > input').click({force:true})//Seleciona Campo Gênero
+      cy.get('#vs1__option-0').click({force:true})//Seleciona Gênero Masculino
       cy.get('#part_telefone1').type(randomPhone, {force:true})
       cy.get('#email').type(email, {force:true})//escreve email correto
       cy.get('#email_confirmation').type(email, {force:true})//escreve email de confirmação
-      cy.get('#part_cep').type('06618010', {force:true})//escreve cep
+      cy.get('#part_cep').type('41245-075', {force:true})//escreve cep
       cy.contains('button', 'Buscar').click({force:true})//clica em buscar cep
       Cypress.on('uncaught:exception', (err, runnable) => {
         // returning false here prevents Cypress from
@@ -85,8 +89,8 @@ describe('Bauducco', function() {
       cy.get('#password_confirmation').type('Senha123', {force:true})//digita confirmação senha
       cy.wait(500)
       cy.get('#part_regulamento').check({force:true})//aceite de termos
-      cy.get('#part_regulamento_promocao').check({force:true})//aceite política de privacidade
-      cy.get('#part_como_ficou_sabendo > div:nth-child(5) > label').click({force:true})//clica no ícone de como ficou sabendo, opção Google
+      //cy.get('#part_regulamento_promocao').check({force:true})//aceite política de privacidade
+      //cy.get('#part_como_ficou_sabendo > div:nth-child(5) > label').click({force:true})//clica no ícone de como ficou sabendo, opção Google
       cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
       //cy.wait(10000)
   })

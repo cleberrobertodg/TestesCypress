@@ -1,15 +1,16 @@
 
 
-import {randomCNPJ } from '../support/variables';
+import {randomCNPJ, randomCupom } from '../support/variables';
 
-import { cpfCadastrado } from '../integration/BauduccoCriacaoDeUsuario.spec';
+import { cpfCadastrado } from '../integration/PagMenosCriaçãoDeUsuario.spec';
 
 describe('Teste PagMenos', function() {
 
-    beforeEach(() => {
-        cy.visit('https://homologd.encinterativa.com.br/bauduccoLeve2025/home/')
-        cy.title().should('be.equal', 'Promoção Leve Bauducco Com Você')
+  /*  beforeEach(() => {
+        cy.visit('https://homologd.encinterativa.com.br/pagueMenos2024/home/')
+        cy.title().should('be.equal', 'Promoção Saúde Premiada Pague Menos, Cimed e Extrafarma')
       })
+        */
     
     
 
@@ -18,7 +19,7 @@ describe('Teste PagMenos', function() {
        
        
        //Testa login com dados errados, testa suas mensagens de erro de preenchimento  e depois testa com os dados corretos
-
+        
         cy.get('#adopt-accept-all-button').click()
         cy.get('#novo_cpf').type(cpfCadastrado)//insere cpf válido
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
@@ -113,22 +114,26 @@ describe('Teste PagMenos', function() {
 
         
 
-
-        cy.get('#novo_cpf').type(cpfCadastrado)//insere cpf válido
-        cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
-        cy.wait(1000)
-        cy.get('#text-password').clear().type('Senha123', {force:true})//digita senha correta
-        cy.get('#page--login > div > div > div > div > div > form > div.login-footer.d-flex.align-items-center.justify-content-center.flex-column > button').click({force:true})//clica em enviar
-        cy.get('#cupo_cnpj').clear().type(randomCNPJ, {force:true})//escreve cnpj válido
-        cy.get('#cupo_codigo').clear().type('16', {force:true})//escreve valor válido no cupom
-        cy.get('#page--cadastro-cupom > section > form > div > div.row.d-flex.align-items-start.justify-content-center > div:nth-child(3) > div > div > div.vdp-datepicker > div:nth-child(1) > input').click({force:true})
+        cy.get('body > div.enc--wrapper > div.page--cupom-sucesso.page-internas > div > div.row.row-btn > button').click({force:true})//clica em cadastrar cupom
+        // cy.get('#novo_cpf').type(cpfCadastrado)//insere cpf válido
+        // cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
+        // cy.wait(1000)
+        // cy.get('#text-password').clear().type('Senha123', {force:true})//digita senha correta
+        // cy.get('#page--login > div > div > div > div > div > form > div.login-footer.d-flex.align-items-center.justify-content-center.flex-column > button').click({force:true})//clica em enviar
+        cy.get('#cupo_cnpj').type('06.626.253/0144-54', {force:true})//escreve cnpj válido
+        cy.get('#cupo_codigo').type(randomCupom, {force:true})//escreve valor válido no cupom
+        cy.get('body > div.enc--wrapper > div.page--cadastro-cupom.page-internas > div > form > div > div:nth-child(2) > div:nth-child(3) > div > div > div:nth-child(1) > input').click({force:true})
         cy.get('.cell.day.today').click({force:true})//escolhe data do dia atual no calendario
-        cy.get('.vs__search').click({force:true})//habilita seleção de produto
-        cy.get('#vs1__option-15').click({force:true})//seleciona produto
-        cy.get('#cuit_quantidade0').clear().type('1', {force:true})//preenche corretamente a quantidade de produtos
+        cy.get('#vs4__combobox > div.vs__selected-options > input').click({force:true})//habilita seleção de categoria
+        cy.get('#vs4__option-4').click({force:true})//seleciona produto
+        cy.wait(1000)
+        cy.get('#vs5__combobox > div.vs__selected-options > input').click({force:true})//seleciona campo de produto
+        cy.get('#vs5__option-1').click({force:true})//seleciona variação de produto
+        cy.get('#cuit_quantidade0').type('1', {force:true})//preenche corretamente a quantidade de produtos
+        cy.get('#cuit_valor0').type('25,00', {force:true})//preenche corretamente o valor do produto
         cy.get('input[type="file"]#fileInput').selectFile('Nota Fiscal.jpg', {force:true})//insere imagem do cupom
         cy.wait(1000)
-        cy.get('#page--cadastro-cupom > section > form > div > div.d-flex.align-items-center.justify-content-center.mt-4.col > button').click({force:true})//clica em finalizar
+        cy.get('body > div.enc--wrapper > div.page--cadastro-cupom.page-internas > div > form > div > div:nth-child(6) > div > button').click({force:true})//clica em finalizar
   })
 
   })
