@@ -1,0 +1,152 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-01-06T15:37:58.207Z",
+    "end": "2025-01-06T15:40:00.509Z",
+    "duration": 122302,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ff3fd540-20a3-444c-9126-1d8929152567",
+      "title": "",
+      "fullFile": "cypress/integration/BauduccoTesteCupom.spec.js",
+      "file": "cypress/integration/BauduccoTesteCupom.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c47e55c6-e5e3-4727-88ec-d6308b517b3a",
+          "title": "Bauducco",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Inscreve Participante",
+              "fullTitle": "Bauducco Inscreve Participante",
+              "timedOut": null,
+              "duration": 60260,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#novo_cpf').type(_variables.randomCPF); //preenche cpf corretamente\ncy.get('[type=\"submit\"]').contains('Enviar').click({\n  force: true\n}); //clica em enviar\ncy.wait(500);\ncy.get('#part_nome').type('Cleber Cypress', {\n  force: true\n}); //escreve nome\ncy.get('#part_sobrenome').type('Test', {\n  force: true\n}); //escreve sobrenome\ncy.get('#part_data_nascimento').type('12041992', {\n  force: true\n});\ncy.get('#part_telefone1').type(_variables.randomPhone, {\n  force: true\n});\ncy.get('#email').type(_variables.email, {\n  force: true\n}); //escreve email correto\ncy.get('#email_confirmation').type(_variables.email, {\n  force: true\n}); //escreve email de confirmação\ncy.get('#part_cep').type('06618010', {\n  force: true\n}); //escreve cep\ncy.contains('button', 'Buscar').click({\n  force: true\n}); //clica em buscar cep\nCypress.on('uncaught:exception', (err, runnable) => {\n  // returning false here prevents Cypress from\n  // failing the test\n  return false;\n});\ncy.wait(3000);\ncy.get('#part_numero').type('100', {\n  force: true\n}); //escreve número da casa\ncy.get('#password').type('Senha123', {\n  force: true\n}); //digita senha \ncy.get('#password_confirmation').type('Senha123', {\n  force: true\n}); //digita confirmação senha\ncy.wait(500);\ncy.get('#part_regulamento').check({\n  force: true\n}); //aceite de termos\ncy.get('#part_regulamento_promocao').check({\n  force: true\n}); //aceite política de privacidade\ncy.get('#part_como_ficou_sabendo > div:nth-child(5) > label').click({\n  force: true\n}); //clica no ícone de como ficou sabendo, opção Google\ncy.get('[type=\"submit\"]').contains('Enviar').click({\n  force: true\n}); //clica em enviar\n//cy.wait(10000)",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.json` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Bauducco`",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.json` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Bauducco`\n    at timedOutWaitingForPageLoad (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:158276:72)\n    at https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:159329:16\n    at tryCatcher (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:13022:23)\n    at https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:8144:41\n    at tryCatcher (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:11135:18)\n    at _drainQueueStep (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://homologd.encinterativa.com.br/__cypress/tests?p=cypress\\integration\\BauduccoTesteCupom.spec.js:108:8)",
+                "diff": null
+              },
+              "uuid": "5bf53d9c-5352-406d-9cd0-37265265176d",
+              "parentUUID": "c47e55c6-e5e3-4727-88ec-d6308b517b3a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "5bf53d9c-5352-406d-9cd0-37265265176d"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 60260,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "d2907f1d-7c06-455c-bcaa-8a460f1feddf",
+          "title": "Teste PagMenos",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Inscreve Cupom corretamente",
+              "fullTitle": "Teste PagMenos Inscreve Cupom corretamente",
+              "timedOut": null,
+              "duration": 60466,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#novo_cpf').type(_BauduccoCriacaoDeUsuario.cpfCadastrado); //insere cpf válido\ncy.get('[type=\"submit\"]').contains('Enviar').click({\n  force: true\n}); //clica em enviar\ncy.wait(1000);\ncy.get('#text-password').clear().type('Senha123', {\n  force: true\n}); //digita senha correta\ncy.get('#page--login > div > div > div > div > div > form > div.login-footer.d-flex.align-items-center.justify-content-center.flex-column > button').click({\n  force: true\n}); //clica em enviar\ncy.get('#cupo_cnpj').clear().type(_variables.randomCNPJ, {\n  force: true\n}); //escreve cnpj válido\ncy.get('#cupo_codigo').clear().type('16', {\n  force: true\n}); //escreve valor válido no cupom\ncy.get('#page--cadastro-cupom > section > form > div > div.row.d-flex.align-items-start.justify-content-center > div:nth-child(3) > div > div > div.vdp-datepicker > div:nth-child(1) > input').click({\n  force: true\n});\ncy.get('.cell.day.today').click({\n  force: true\n}); //escolhe data do dia atual no calendario\ncy.get('.vs__search').click({\n  force: true\n}); //habilita seleção de produto\ncy.get('#vs1__option-15').click({\n  force: true\n}); //seleciona produto\ncy.get('#cuit_quantidade0').clear().type('1', {\n  force: true\n}); //preenche corretamente a quantidade de produtos\ncy.get('input[type=\"file\"]#fileInput').selectFile('Nota Fiscal.jpg', {\n  force: true\n}); //insere imagem do cupom\ncy.wait(1000);\ncy.get('#page--cadastro-cupom > section > form > div > div.d-flex.align-items-center.justify-content-center.mt-4.col > button').click({\n  force: true\n}); //clica em finalizar",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.json` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Teste PagMenos`",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.json` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Teste PagMenos`\n    at timedOutWaitingForPageLoad (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:158276:72)\n    at https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:159329:16\n    at tryCatcher (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:13022:23)\n    at https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:8144:41\n    at tryCatcher (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:11135:18)\n    at _drainQueueStep (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://homologd.encinterativa.com.br/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://homologd.encinterativa.com.br/__cypress/tests?p=cypress\\integration\\BauduccoTesteCupom.spec.js:330:8)",
+                "diff": null
+              },
+              "uuid": "8f49fa72-b7ba-4ddb-9508-b13c2cadafff",
+              "parentUUID": "d2907f1d-7c06-455c-bcaa-8a460f1feddf",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8f49fa72-b7ba-4ddb-9508-b13c2cadafff"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 60466,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

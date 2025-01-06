@@ -16,7 +16,7 @@ describe('Criação de usuário PagMenos', function() {
 
     it('Valida se o form aceita campos preenchidos em formato inválido, e se retorna mensagens de erro', function(){
 
-     
+     cy.log('Valida se o form aceita campos preenchidos em formato inválido, e se retorna mensagens de erro')
 
         cy.get('body > div.enc--wrapper > div.info-cookies > div > div > div > div:nth-child(2) > div > button').click()
         cy.get('#nav-collapse > ul > div > div > ul > li > a').click()
@@ -60,9 +60,12 @@ describe('Criação de usuário PagMenos', function() {
        // cy.wait(10000)
     })
 
-    it.only('Inscreve Participante', function(){
 
-      
+    
+
+    it.only('Inscreve corretamente o participante', function(){
+
+
       cy.get('body > div.enc--wrapper > div.info-cookies > div > div > div > div:nth-child(2) > div > button').click()
       cy.get('#nav-collapse > ul > div > div > ul > li > a').click()
       cy.get('#novo_cpf').type(randomCPF, {force:true})//preenche cpf corretamente
@@ -96,6 +99,8 @@ describe('Criação de usuário PagMenos', function() {
   })
 
   })
+
+  
 
   export const cpfCadastrado = randomCPF
 

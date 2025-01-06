@@ -110,7 +110,9 @@ describe('Teste PagMenos', function() {
 
     })
 
-    it.only('Inscreve Cupom corretamente', function(){
+
+    
+      it.only('Inscreve Cupom corretamente', function(){
 
         
 
@@ -135,5 +137,8 @@ describe('Teste PagMenos', function() {
         cy.wait(1000)
         cy.get('body > div.enc--wrapper > div.page--cadastro-cupom.page-internas > div > form > div > div:nth-child(6) > div > button').click({force:true})//clica em finalizar
   })
+    
+
+   
 
   })
