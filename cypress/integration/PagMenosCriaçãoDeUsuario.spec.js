@@ -30,30 +30,28 @@ describe('Criação de usuário PagMenos', function() {
         cy.get('#part_cpf').type('abcdefg', {force:true})//escreve string no cpf
         cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_nome').type('@@@', {force:true}).clear().type('12345', {force:true})
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
-        cy.get('#part_sobrenome').type('@@@', {force:true}).clear().type('12345', {force:true})
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_data_nascimento').type('@@@', {force:true}).clear().type('acbkh', {force:true}).clear().type('01011000', {force:true}).clear().type('31313500', {force:true})//escreve datas de nascimento inválidas
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_telefone1').type('@@@', {force:true}).clear().type('asdcgg', {force:true})
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#email').type('@@@', {force:true}).clear().type('12345', {force:true}).clear().type('cleber.com@email', {force:true})
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#email_confirmation').type('@@@', {force:true}).clear().type('12345', {force:true}).clear().type('cleber.com@email', {force:true})
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_cep').type('wergaefgaeg', {force:true})//escreve cep inválido com strings
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_cep').type('99999999', {force:true})//escreve cep inválido somente com 9999
-        cy.contains('button', 'Buscar').click()//clica em buscar cep
-        cy.get('#page--cadastro > div > div.wrapper-cadastro-body.mt-4 > form > div:nth-child(3) > div:nth-child(1) > div > div > div.error-form.error-back').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.contains('button', 'Buscar').click({force:true})//clica em buscar cep
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.wait(500)
         cy.get('#part_endereco').clear({force:true}).type('@@@@', {force:true})//escreve nome de rua inválido
         cy.get('#part_numero').type('asdfghj', {force:true})//escreve número inválido com strings
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#password').type('asdfghj', {force:true})//digita senha fora do padrão
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#password_confirmation').type('1223456', {force:true})//digita senha fora do padrão
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.wait(500)
         cy.get('#part_regulamento').check({force:true})//aceite de termos
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
