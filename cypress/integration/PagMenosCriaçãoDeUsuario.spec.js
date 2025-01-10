@@ -20,15 +20,15 @@ describe('Criação de usuário PagMenos', function() {
 
         cy.get('body > div.enc--wrapper > div.info-cookies > div > div > div > div:nth-child(2) > div > button').click()
         cy.get('#nav-collapse > ul > div > div > ul > li > a').click()
-        cy.get('#novo_cpf').type('srgtewrgt')//preenche cpf errado
-        cy.get('#input-cpf-live-feedback > span').should('be.visible').contains('O campo CPF é obrigatório')//verifica msg de erro
+        cy.get('#novo_cpf').type('srgtewrgt', {force:true})//preenche cpf errado
+        cy.get('#input-cpf-new-feedback > span').should('be.visible').contains('O campo CPF é obrigatório')//verifica msg de erro
         cy.get('#novo_cpf').type(randomCPF)//insere cpf válido
         cy.get('[type="submit"]').contains('Enviar').click({force:true})//clica em enviar
         cy.wait(500)
-        cy.get('#part_cpf').clear()//apaga campo de cpf
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('#part_cpf').clear({force:true})//apaga campo de cpf
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_cpf').type('abcdefg', {force:true})//escreve string no cpf
-        cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
+        cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_nome').type('@@@', {force:true}).clear().type('12345', {force:true})
         cy.get('[class="error-form invalid-feedback"]').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_sobrenome').type('@@@', {force:true}).clear().type('12345', {force:true})
@@ -63,7 +63,7 @@ describe('Criação de usuário PagMenos', function() {
 
     
 
-    it.only('Inscreve corretamente o participante', function(){
+    it('Inscreve corretamente o participante', function(){
 
 
       cy.get('body > div.enc--wrapper > div.info-cookies > div > div > div > div:nth-child(2) > div > button').click()
