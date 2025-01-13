@@ -37,7 +37,7 @@ describe('Criação de usuário PagMenos', function() {
         cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#email').type('@@@', {force:true}).clear().type('12345', {force:true}).clear().type('cleber.com@email', {force:true})
         cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
-        cy.get('#email_confirmation').type('@@@', {force:true}).clear().type('12345', {force:true}).clear().type('cleber.com@email', {force:true})
+        cy.get('#email_confirmation').type('@@@', {force:true}).clear().type('12345', {force:true}).clear().type('cleber@email', {force:true})
         cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
         cy.get('#part_cep').type('wergaefgaeg', {force:true})//escreve cep inválido com strings
         cy.get('.error-form > span').should('be.visible')//valida se aparece msg de erro no preenchimento
